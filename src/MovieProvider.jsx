@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const MovieContext = React.createContext();
 
-const MovieProvider = () => {
+const MovieProvider = (props) => {
   const [movies, setMovies] = useState([]);
 
   const fetchApi = async () => {
@@ -15,7 +15,6 @@ const MovieProvider = () => {
       );
       const data = result.data.items;
       setMovies(data);
-      console.log(movies);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +25,7 @@ const MovieProvider = () => {
 
   return (
     <MovieContext.Provider value={{ movies, fetchApi }}>
-      {children}
+      {props.children}
     </MovieContext.Provider>
   );
 };

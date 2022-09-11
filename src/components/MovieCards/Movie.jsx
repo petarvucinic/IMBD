@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Card, Image, Text, Group } from "@mantine/core";
+import { Card, Image} from "@mantine/core";
 
 function Movie({ movie }) {
   return (
-    <Card shadow="md" p="lg" radius="md" withBorder>
+    <Card sx={{heigth: "450px", width: "230px"}} shadow="md" p="lg" radius="md" withBorder>
       <Card.Section>
-        <Image src={movie.image} height={160} alt="Norway" />
+        <Image src={movie.image}  alt="Norway" />
       </Card.Section>
     </Card>
   );

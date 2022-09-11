@@ -5,11 +5,11 @@ import Movie from "./Movie";
 import { MovieContext } from "../../MovieProvider";
 
 const MovieCards = () => {
-  const { movies, fetchApi } = useContext(MovieContext);
+  const { movies } = useContext(MovieContext);
 
-  fetchApi();
+  // fetchApi();
   return (
-    <Grid sx={{ padding: "40px" }}>
+    <Grid >
       {movies.length > 0
         ? movies.map((movie, index) => {
             return (
