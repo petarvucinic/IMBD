@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import { TablerIcon, IconSearch, IconHome2 } from "@tabler/icons";
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -65,11 +66,12 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
 }
 
 const mockdata = [
-  { icon: IconHome2, label: "Home" },
-  { icon: IconSearch, label: "Search" },
+  { icon: IconHome2, label: "home" },
+  { icon: IconSearch, label: "search" },
 ];
 
 export function NavbarMinimal() {
+  const navigate = useNavigate();
   const [active, setActive] = useState(2);
 
   const links = mockdata.map((link, index) => (
@@ -82,12 +84,15 @@ export function NavbarMinimal() {
   ));
 
   return (
-    <Navbar sx={{height: "100vh"}} width={{ base: 80 }} p="md">
+    <Navbar sx={{ height: "100vh" }} width={{ base: 80 }} p="md">
       <Navbar.Section grow mt={50}>
-        <Stack justify="center" spacing={0}>
-          {links}
+        <Stack justify="center" spacing={0} onClick={() => navigate("/")}>
+          {links[0]}
         </Stack>
-      </Navbar.Section> 
+        <Stack justify="center" spacing={0} onClick={() => navigate("/search")}>
+          {links[1]}
+        </Stack>
+      </Navbar.Section>
     </Navbar>
   );
 }

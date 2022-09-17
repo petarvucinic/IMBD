@@ -1,17 +1,16 @@
 import React from "react";
 import MovieCards from "../MovieCards/MovieCards";
 import { NavbarMinimal } from "../NavMenu/NavbarMinimal.tsx";
-import Try from "../NavMenu/Try";
 
 const LandingPage = () => {
   return (
-    <div style={{ display: "inline", flexDirection: "column" }}>
-      <div>
-        {/* <NavbarMinimal /> */}
-        <Try />
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div >
+        <NavbarMinimal />
       </div>
-
-      {/* <MovieCards /> */}
+      <div style={{ justifyContent: "space-evenly" }}>
+        <MovieCards />
+      </div>
     </div>
   );
 };

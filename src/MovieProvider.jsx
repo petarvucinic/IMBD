@@ -7,6 +7,7 @@ export const MovieContext = React.createContext();
 
 const MovieProvider = (props) => {
   const [movies, setMovies] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchApi = async () => {
     try {
@@ -24,7 +25,9 @@ const MovieProvider = (props) => {
   }, []);
 
   return (
-    <MovieContext.Provider value={{ movies, fetchApi }}>
+    <MovieContext.Provider
+      value={{ movies, fetchApi, setSearchInput, searchInput }}
+    >
       {props.children}
     </MovieContext.Provider>
   );
