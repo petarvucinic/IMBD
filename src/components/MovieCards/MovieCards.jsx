@@ -7,6 +7,7 @@ import { MovieContext } from "../../MovieProvider";
 const MovieCards = () => {
   const { movies } = useContext(MovieContext);
 
+  
   // fetchApi();
   return (
     <Grid >

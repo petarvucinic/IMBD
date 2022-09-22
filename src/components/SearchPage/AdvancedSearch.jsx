@@ -9,7 +9,7 @@ function AdvancedSearch() {
         <NavbarMinimal />
       </div>
       <div style={{ display: "flex", margin: "60px auto 0px auto" }}>
-        <AdvancedSearchUI />
+        {/* <AdvancedSearchUI /> */}
       </div>
     </div>
   );

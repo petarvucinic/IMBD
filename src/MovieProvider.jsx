@@ -8,6 +8,7 @@ export const MovieContext = React.createContext();
 const MovieProvider = (props) => {
   const [movies, setMovies] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [filtered, setFiltered] = useState([]);
 
   const fetchApi = async () => {
     try {
@@ -20,13 +21,29 @@ const MovieProvider = (props) => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    fetchApi();
-  }, []);
+
+  const fetchSearchMovieApi = async (query) => {
+    try {
+      const result = await axios.get(
+        `https://imdb-api.com/en/API/SearchMovie/${API_KEY}/${query}`
+      );
+      setMovies(result.data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <MovieContext.Provider
-      value={{ movies, fetchApi, setSearchInput, searchInput }}
+      value={{
+        movies,
+        fetchApi,
+        setSearchInput,
+        searchInput,
+        fetchSearchMovieApi,
+        filtered,
+        setFiltered,
+      }}
     >
       {props.children}
     </MovieContext.Provider>

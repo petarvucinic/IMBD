@@ -84,12 +84,17 @@ export function NavbarMinimal() {
   ));
 
   return (
-    <Navbar sx={{ height: "100vh" }} width={{ base: 80 }} p="md">
+    <Navbar
+      sx={{ height: "100vh", position: "fixed" }}
+      width={{ base: 80 }}
+      p="md"
+      withBorder
+    >
       <Navbar.Section grow mt={50}>
-        <Stack justify="center" spacing={0} onClick={() => navigate("/")}>
+        <Stack sx={{marginTop: 150}} justify="center" spacing={0} onClick={() => navigate("/")}>
           {links[0]}
         </Stack>
-        <Stack justify="center" spacing={0} onClick={() => navigate("/search")}>
+        <Stack sx={{marginTop: 150}} justify="center" spacing={0} onClick={() => navigate("/search")}>
           {links[1]}
         </Stack>
       </Navbar.Section>

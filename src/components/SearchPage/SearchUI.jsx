@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Input, Button } from "@mantine/core";
 import { IconSearch } from "@tabler/icons";
 import { MovieContext } from "../../MovieProvider";
 import { useNavigate } from "react-router-dom";
+import MovieCards from "../MovieCards/MovieCards";
 
 function SearchUI() {
-  const { setSearchInput, fetchApi } = useContext(MovieContext);
-  const navigate = useNavigate()
-  const handleSearchInput = (e) => {
-    console.log(e.target.value)
-    setSearchInput(e)
-    fetchApi()
+  const { fetchSearchMovieApi, fetchApi } = useContext(MovieContext);
+  const navigate = useNavigate();
+  const [value, setValue] = useState("");
+
+  const onKeyUp = (event) => {
+    if (event.key === "Enter" && value !== "") {
+      const query = value.trim();
+      if (query === "") {
+        fetchApi();
+      } else {
+        fetchSearchMovieApi(query);
+      }
+    }
   };
+
   return (
     <div style={{ width: "500px" }}>
       <div style={{ display: "flex" }}>
@@ -20,7 +29,8 @@ function SearchUI() {
           icon={<IconSearch />}
           placeholder="Search"
           radius="xl"
-          onChange={(e) => handleSearchInput(e)}
+          onKeyDown={(e) => onKeyUp(e)}
+          onChange={(e) => setValue(e.target.value)}
         />
         <Button
           radius="xl"
@@ -29,6 +39,9 @@ function SearchUI() {
         >
           Advanced Search
         </Button>
+      </div>
+      <div style={{ width: "90%" }}>
+        <MovieCards />
       </div>
     </div>
   );
