@@ -22,10 +22,10 @@ function SearchUI() {
   };
 
   return (
-    <div style={{ width: "500px" }}>
+    <div style={{  }}>
       <div style={{ display: "flex" }}>
         <Input
-          sx={{ width: "60%" }}
+          sx={{ margin: "20px auto 50px auto" }}
           icon={<IconSearch />}
           placeholder="Search"
           radius="xl"
@@ -34,13 +34,13 @@ function SearchUI() {
         />
         <Button
           radius="xl"
-          sx={{ width: "130px", fontSize: "10px", marginLeft: "30px" }}
+          sx={{ width: "130px", fontSize: "10px", margin: "20px auto 50px auto", marginLeft: "20px" }}
           onClick={() => navigate("/advanced_search")}
         >
           Advanced Search
         </Button>
       </div>
-      <div style={{ width: "90%" }}>
+      <div style={{ width: "90%", marginLeft: 160 }}>
         <MovieCards />
       </div>
     </div>
