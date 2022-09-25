@@ -5,7 +5,7 @@ import { MovieContext } from "../../MovieProvider";
 
 const LandingPage = () => {
   const { fetchApi } = useContext(MovieContext);
-
+  
   useEffect(() => {
     fetchApi();
   }, []);

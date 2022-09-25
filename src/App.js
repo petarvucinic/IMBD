@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage/LangingPage";
 import AdvancedSearch from "./components/SearchPage/AdvancedSearch";
 import SearchPage from "./components/SearchPage/SearchPage";
 import MovieProvider from "./MovieProvider";
+import AboutMovie from "./components/AboutMovie/AboutMovie";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/advanced_search" element={<AdvancedSearch />} />
+          <Route path="/advancedSearch" element={<AdvancedSearch />} />
+          <Route path="/aboutMovie" element={<AboutMovie />} />
         </Routes>
       </MovieProvider>
     </div>

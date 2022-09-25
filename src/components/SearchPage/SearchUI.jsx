@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import MovieCards from "../MovieCards/MovieCards";
 
 function SearchUI() {
-  const { fetchSearchMovieApi, fetchApi } = useContext(MovieContext);
+  const { fetchSearchMovieApi, fetchApi, moviesOrSeries, fetchSearchTvs } =
+    useContext(MovieContext);
   const navigate = useNavigate();
   const [value, setValue] = useState("");
 
@@ -15,14 +16,16 @@ function SearchUI() {
       const query = value.trim();
       if (query === "") {
         fetchApi();
-      } else {
+      } else if (moviesOrSeries == false) {
         fetchSearchMovieApi(query);
+      } else if (moviesOrSeries == true) {
+        fetchSearchTvs(query);
       }
     }
   };
 
   return (
-    <div style={{  }}>
+    <div style={{}}>
       <div style={{ display: "flex" }}>
         <Input
           sx={{ margin: "20px auto 50px auto" }}
@@ -34,7 +37,12 @@ function SearchUI() {
         />
         <Button
           radius="xl"
-          sx={{ width: "130px", fontSize: "10px", margin: "20px auto 50px auto", marginLeft: "20px" }}
+          sx={{
+            width: "130px",
+            fontSize: "10px",
+            margin: "20px auto 50px auto",
+            marginLeft: "20px",
+          }}
           onClick={() => navigate("/advanced_search")}
         >
           Advanced Search
